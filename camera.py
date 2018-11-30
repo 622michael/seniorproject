@@ -32,14 +32,14 @@ def getImgForGenderClassification(img, shape):
 		## The face is too far away
 		return None
 
-	(x,y,w,h) = shape
-	shape = (max(x - 10, 0), max(y - 10, 0), w+10, h+10)
+	# (x,y,w,h) = shape
+	# shape = (max(x - 50, 0), max(y - 50, 0), w+50, h+50)
 	face_img = img[shape[1]:shape[1] + shape[3], shape[0]:shape[0] + shape[3]]
 
-	(w,h,c) = face_img.shape
-	if (w == 0 or h == 0):
-		print("Failed to get face image")
-		return None
+	# (w,h,c) = face_img.shape
+	# if (w == 0 or h == 0):
+	# 	print("Failed to get face image")
+	# 	return None
 	return cv2.resize(face_img, final_shape)
 
 
