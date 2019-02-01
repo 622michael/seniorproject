@@ -32,22 +32,15 @@ def get_expected_values(path, limit=-1, column=21):
 				r[x - 1] = 1
 		print(r)
 
-
-		# for v in values[1:]:
-		# 	if (int(v) == 1):
-		# 		# print("Male")
-		# 		r.append(np.array([1,0]))
-		# 	else:
-		# 		# print("Female")
-		# 		r.append(np.array([0,1]))
-
-		# values = [np.array([float(v)]) for v in values[1:limit]]
 		return r
 
-def get_input_images(folder, limit=-1, gray_scale=True):
+def grab_images(folder, limit=-1):
 	filenames = os.listdir(folder)
 	filenames.sort()
 	imgs = [cv2.imread(os.path.join(folder, f)) for f in filenames[0:limit]]
+
+def get_input_images(folder, limit=-1, gray_scale=True):
+	imgs = grab_images(folder, limit=limit)
 	if (gray_scale):
 		imgs = [cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in imgs]
 	return np.array(imgs)
